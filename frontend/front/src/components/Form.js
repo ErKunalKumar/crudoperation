@@ -36,7 +36,7 @@ const Form = ({ handleSubmit, handleOnChange, handlClose, rest }) => {
           value={rest.mobile}
         />
 
-        <button className="btn">Submit</button>
+        <button className="btn1">Submit</button>
       </form>
     </div>
   );

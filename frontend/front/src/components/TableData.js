@@ -59,14 +59,14 @@ const TableData = () => {
       ),
     },
   ];
-
+  // console.log(data1);
   useEffect(() => {
     getData1();
   }, []);
-
+  console.log("country", data1);
   useEffect(() => {
     const result = data1.filter((el) => {
-      return el.name.toLowerCase().match(search.toLocaleLowerCase());
+      return el.name.toLowerCase().match(search.toLowerCase());
     });
     setFilterData1(result);
   }, [search]);

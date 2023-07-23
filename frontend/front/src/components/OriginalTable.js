@@ -3,7 +3,7 @@ import "../App.css";
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 
-// axios.defaults.baseURL = "http://localhost:8080/";
+axios.defaults.baseURL = "http://localhost:8080/";
 const TableData = () => {
   const [search, setSearch] = useState("");
   const [data1, setData1] = useState([]);
@@ -64,9 +64,12 @@ const TableData = () => {
     getData1();
   }, []);
 
+  // console.log("data1", data1);
+  const data3 = Object.values(data1);
+  console.log("data3", data3);
   useEffect(() => {
-    const result = data1.filter((el) => {
-      return el.name.toLowerCase().match(search.toLocaleLowerCase());
+    const result = data3.filter((el) => {
+      return el.name?.toLowerCase().match(search?.toLowerCase());
     });
     setFilterData1(result);
   }, [search]);
