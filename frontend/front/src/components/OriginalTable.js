@@ -20,9 +20,19 @@ const TableData = () => {
       console.log(error);
     }
   };
-  const handleEdit = () => {
-    // setFormDataEdit(el);
-    // setEditSection(true);
+
+  // ===============search api=============
+  const searchHandle = async (e) => {
+    console.log(e.target.value);
+    const key = e.target.value;
+    if (key) {
+      let result = await axios.get(`/search/${key}`);
+      let data = await result.data;
+      console.log(data);
+      setFilterData1(data);
+    } else {
+      getData1();
+    }
   };
 
   const colums = [
@@ -60,19 +70,23 @@ const TableData = () => {
     },
   ];
 
+  const handleEdit = () => {
+    // setFormDataEdit(el);
+    // setEditSection(true);
+  };
   useEffect(() => {
     getData1();
   }, []);
 
   // console.log("data1", data1);
-  const data3 = Object.values(data1);
-  console.log("data3", data3);
-  useEffect(() => {
-    const result = data3.filter((el) => {
-      return el.name?.toLowerCase().match(search?.toLowerCase());
-    });
-    setFilterData1(result);
-  }, [search]);
+  // const data3 = Object.values(data1);
+  // console.log("data3", data3);
+  // useEffect(() => {
+  //   const result = data3.filter((el) => {
+  //     return el.name?.toLowerCase().match(search?.toLowerCase());
+  //   });
+  //   setFilterData1(result);
+  // }, [search]);
   return (
     <DataTable
       title={"Original Data"}
@@ -87,11 +101,11 @@ const TableData = () => {
       subHeader
       subHeaderComponent={
         <input
-          type="text"
+          type="search"
           placeholder="Search here"
           className="w-25 form-control"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          // value={search}
+          onChange={searchHandle}
         />
       }
     />

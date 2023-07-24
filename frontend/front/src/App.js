@@ -9,7 +9,7 @@ const App = () => {
   return (
     <>
       <Main />
-      <TableData />
+      {/* <TableData /> */}
       <OriginalTable />
     </>
   );

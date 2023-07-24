@@ -63,7 +63,7 @@ const TableData = () => {
   useEffect(() => {
     getData1();
   }, []);
-  console.log("country", data1);
+  console.log("countryrrr", data1);
   useEffect(() => {
     const result = data1.filter((el) => {
       return el.name.toLowerCase().match(search.toLowerCase());

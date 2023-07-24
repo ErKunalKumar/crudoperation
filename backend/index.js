@@ -27,6 +27,17 @@ app.get("/", async (req, res) => {
   const data = await userModel.find({});
   res.json({ success: true, data: data });
 });
+// ========== search api ===========
+app.get("/search/:key", async (req, res) => {
+  let data = await userModel.find({
+    $or: [
+      { name: { $regex: req.params.key } },
+      { email: { $regex: req.params.key } },
+      { mobile: { $regex: req.params.key } },
+    ],
+  });
+  res.send(data);
+});
 
 // =====================create data/ sava data to mongodb==============
 app.post("/create", async (req, res) => {
